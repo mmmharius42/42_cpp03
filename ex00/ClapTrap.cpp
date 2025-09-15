@@ -10,3 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+ClapTrap::ClapTrap(std::string name) : _Name(name) {
+    std::cout << "ClapTrap " << _Name << " is created!\n";
+}
+
+ClapTrap::~ClapTrap() {
+    std::cout << "ClapTrap " << _Name << " is destroyed!\n";
+}
+
+void ClapTrap::attack(const std::string& target) {
+    if (_PointHealth <= 0 || _PointEnergy <= 0) {
+        std::cout << "ClapTrap " << _Name << " can't attack!\n";
+        return;
+    }
+    _PointEnergy--;
+    std::cout << "ClapTrap " << _Name << " attacks " << target
+              << ", causing " << _AttackDamage << " points of damage!\n";
+}
+
+void ClapTrap::takeDamage(unsigned int amount) {
+    _PointHealth -= amount;
+    if (_PointHealth < 0) _PointHealth = 0;
+    std::cout << "ClapTrap " << _Name << " takes " << amount << " damage!\n";
+}
+
+void ClapTrap::beRepaired(unsigned int amount) {
+    if (_PointHealth <= 0 || _PointEnergy <= 0) {
+        std::cout << "ClapTrap " << _Name << " can't repair!\n";
+        return;
+    }
+    _PointEnergy--;
+    _PointHealth += amount;
+    std::cout << "ClapTrap " << _Name << " repairs itself for " << amount << " hit points!\n";
+}
