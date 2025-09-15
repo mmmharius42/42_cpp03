@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap(std::string name) : _Name(name) {
+#include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(std::string name) : _Name(name), _PointHealth(10), _AttackDamage(0), _PointEnergy(8) {
     std::cout << "ClapTrap " << _Name << " is created!\n";
 }
 

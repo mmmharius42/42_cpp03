@@ -10,4 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-test test
+#include "ClapTrap.hpp"
+
+int main(void) {
+    ClapTrap salut("Bien le s");
+    ClapTrap Bonjour("Comment allez-vous");
+    salut.attack("Bonjour");
+    salut.takeDamage(5);
+    salut.beRepaired(2);
+}
