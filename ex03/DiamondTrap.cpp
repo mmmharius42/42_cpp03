@@ -6,7 +6,7 @@
 /*   By: mpapin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 02:08:11 by mpapin            #+#    #+#             */
-/*   Updated: 2025/09/17 02:23:17 by mpapin           ###   ########.fr       */
+/*   Updated: 2025/09/17 20:47:57 by mpapin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ DiamondTrap::DiamondTrap(std::string name)
     _PointEnergy = 50;
     _AttackDamage = 30;
     std::cout << "DiamondTrap constructor called for: " << _Name << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &other)
+    : ClapTrap(other), FragTrap(other), ScavTrap(other), _Name(other._Name) {
+    std::cout << "DiamondTrap copy constructor called for: " << _Name << std::endl;
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other) {
+    if (this != &other) {
+        ClapTrap::operator=(other);
+        FragTrap::operator=(other);
+        ScavTrap::operator=(other);
+        _Name = other._Name;
+        std::cout << "DiamondTrap assignment operator called for: " << _Name << std::endl;
+    }
+    return *this;
 }
 
 DiamondTrap::~DiamondTrap() {

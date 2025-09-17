@@ -6,7 +6,7 @@
 /*   By: mpapin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 01:40:06 by mpapin            #+#    #+#             */
-/*   Updated: 2025/09/17 20:31:15 by mpapin           ###   ########.fr       */
+/*   Updated: 2025/09/17 20:40:30 by mpapin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class FragTrap : public ClapTrap {
     public :
         FragTrap();
         FragTrap(std::string _Name);
+        FragTrap(const FragTrap &other);
+        FragTrap &operator=(const FragTrap &other);
         ~FragTrap();
         
         void highFivesGuys(void);
