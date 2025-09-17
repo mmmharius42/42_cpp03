@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fPIE
 SRCDIR = .
 OBJDIR = obj
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp 
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 
 all: $(OBJDIR) $(NAME)

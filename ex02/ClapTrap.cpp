@@ -6,7 +6,7 @@
 /*   By: mpapin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:01:27 by mpapin            #+#    #+#             */
-/*   Updated: 2025/09/17 02:07:43 by mpapin           ###   ########.fr       */
+/*   Updated: 2025/09/17 02:00:29 by mpapin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ void ClapTrap::attack(const std::string& target) {
 void ClapTrap::takeDamage(unsigned int amount) {
     _PointHealth -= static_cast<int>(amount);
     if (_PointHealth < 0) _PointHealth = 0;
-    std::cout << "ClapTrap " << _Name << " take(s) " << amount << " damage" << std::endl;
+    std::cout << "ClapTrap " << _Name << " take(s) " << amount << " damage!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
     if (_PointHealth <= 0 || _PointEnergy <= 0) {
-        std::cout << "ClapTrap " << _Name << " can t repair" << std::endl;
+        std::cout << "ClapTrap " << _Name << " can t repair!" << std::endl;
         return;
     }
     _PointEnergy--;
     _PointHealth += amount;
-    std::cout << "ClapTrap " << _Name << " repairs itself " << amount << " points" << std::endl;
+    std::cout << "ClapTrap " << _Name << " repairs itself " << amount << " points!" << std::endl;
 }
-

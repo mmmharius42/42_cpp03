@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpapin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 16:01:25 by mpapin            #+#    #+#             */
-/*   Updated: 2025/09/17 02:03:56 by mpapin           ###   ########.fr       */
+/*   Created: 2025/09/17 02:09:13 by mpapin            #+#    #+#             */
+/*   Updated: 2025/09/17 02:23:16 by mpapin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
+
 #include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-int main() {
-    ClapTrap salut("numero1");
-    salut.attack("target A");
-    salut.takeDamage(5);
-    salut.beRepaired(3);
+class DiamondTrap : public FragTrap, public ScavTrap {
+    private :
+        std::string _Name;
+    public:
+        DiamondTrap();
+        DiamondTrap(std::string name);
+        ~DiamondTrap();
 
-    ScavTrap sava("numero2");
-    sava.attack("numero1");
-    sava.takeDamage(20);
-    sava.beRepaired(10);
-    sava.guardGate();
+        using ScavTrap::attack;
 
-    return 0;
-}
+        void whoAmI();
+};
+
+#endif
