@@ -6,25 +6,37 @@
 /*   By: mpapin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 17:56:02 by mpapin            #+#    #+#             */
-/*   Updated: 2025/09/17 01:58:32 by mpapin           ###   ########.fr       */
+/*   Updated: 2025/09/17 20:27:58 by mpapin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Default") {
-    _PointHealth = 100;
-    _PointEnergy = 50;
-    _AttackDamage = 20; 
-    std::cout << "ScavTrap " << _Name << " created" << std::endl;
+ScavTrap::ScavTrap() : ClapTrap() {
+    this->_PointHealth = 100;
+    this->_PointEnergy = 50;
+    this->_AttackDamage = 20;
+    std::cout << "ScavTrap default constructor called for: " << _Name << std::endl;
 }
 
+ 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-    _PointHealth = 100;
-    _PointEnergy = 50;
-    _AttackDamage = 20;
-    std::cout << "ScavTrap " << name << " created" << std::endl;
+    this->_PointHealth = 100;
+    this->_PointEnergy = 50;
+    this->_AttackDamage = 20;
+    std::cout << "ScavTrap constructor called for: " << _Name << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
+    std::cout << "ScavTrap copy constructor called for: " << _Name << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
+    if (this != &other) {
+        ClapTrap::operator=(other);
+    }
+    std::cout << "ScavTrap assignment operator called for: " << _Name << std::endl;
+    return *this;
 }
 
 ScavTrap::~ScavTrap() {
@@ -34,10 +46,10 @@ ScavTrap::~ScavTrap() {
 void ScavTrap::attack(const std::string& target) {
     if (_PointEnergy > 0 && _PointHealth > 0) {
         std::cout << "ScavTrap " << _Name << " attacks " << target
-            << ", causing " << _AttackDamage << " points of damage!" << std::endl;
+                  << ", causing " << _AttackDamage << " points of damage!" << std::endl;
         _PointEnergy--;
     } else {
-        std::cout << "ScavTrap " << _Name << " can t attack. Not enough energy or health." << std::endl;
+        std::cout << "ScavTrap " << _Name << " can't attack. Not enough energy or health." << std::endl;
     }
 }
 

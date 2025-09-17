@@ -6,7 +6,7 @@
 /*   By: mpapin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:01:27 by mpapin            #+#    #+#             */
-/*   Updated: 2025/09/17 02:07:43 by mpapin           ###   ########.fr       */
+/*   Updated: 2025/09/17 20:12:51 by mpapin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,24 @@ ClapTrap::ClapTrap() : _Name("Default"), _PointHealth(10), _AttackDamage(0), _Po
     std::cout << "ClapTrap " << _Name <<  " created" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _Name(name), _PointHealth(10), _AttackDamage(0), _PointEnergy(8) {
+ClapTrap::ClapTrap(std::string name) : _Name(name), _PointHealth(10), _AttackDamage(0), _PointEnergy(10) {
     std::cout << "ClapTrap " << _Name << " created" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other) : _Name(other._Name), _PointHealth(other._PointHealth),
+        _AttackDamage(other._AttackDamage), _PointEnergy(other._PointEnergy) {
+    std::cout << "ClapTrap " << _Name << " created" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+    if (this != &other) {
+        _Name = other._Name;
+        _PointHealth = other._PointHealth;
+        _PointEnergy = other._PointEnergy;
+        _AttackDamage = other._AttackDamage;
+    }
+    std::cout << "ClapTrap " << _Name << " assigned" << std::endl;
+    return *this;
 }
 
 ClapTrap::~ClapTrap() {
@@ -49,4 +65,3 @@ void ClapTrap::beRepaired(unsigned int amount) {
     _PointHealth += amount;
     std::cout << "ClapTrap " << _Name << " repairs itself " << amount << " points" << std::endl;
 }
-
